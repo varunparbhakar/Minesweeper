@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
-        File myFile = new File("input.txt");
+        File myFile = new File("team_minesweeper_input.txt");
         Scanner fileScanner = new Scanner(myFile);
         int counter = 1;
         while (fileScanner.hasNext()) {
@@ -39,10 +39,6 @@ public class Main {
             String currentLine = theScanner.nextLine();
 
             for (int i = 0; i < theColumn; i++) {
-                if(i > currentLine.length()-1) {
-                    System.out.println("The length of current line: " + currentLine.length());
-                    currentLine = theScanner.next();
-                }
                 if (currentLine.charAt(i) == '*') {
                     myMap.insertBomb(currentRow, i);
 
