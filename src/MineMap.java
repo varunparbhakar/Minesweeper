@@ -36,7 +36,7 @@ public class MineMap {
             myBombLocation = Arrays.copyOf(myBombLocation, myTotalBombs * 2);
         }
         myBombLocation[myTotalBombs] = new Point(theRow, theColumn);
-        myMineMap[theRow][theColumn] = new Bomb(theRow, theColumn);
+        myMineMap[theRow][theColumn] = new Bomb();
         myTotalBombs++;
     }
     protected void insertIndicator(final int theRow, final int theColumn) {
