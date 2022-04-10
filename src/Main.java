@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
-        System.out.println("Test");
         File myFile = new File("input.txt");
         Scanner fileScanner = new Scanner(myFile);
         int counter = 1;
