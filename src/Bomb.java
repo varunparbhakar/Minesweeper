@@ -1,6 +1,6 @@
 public class Bomb {
 
-    public Bomb(final int theX,final int theY ) {
+    public Bomb() {
     }
 
     @Override
