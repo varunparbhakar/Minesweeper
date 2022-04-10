@@ -14,5 +14,7 @@ class IndicatorTest {
 
     @Test
     void testToString() {
+        Indicator indicator = new Indicator();
+        assertEquals(".",indicator.toString());
     }
 }
