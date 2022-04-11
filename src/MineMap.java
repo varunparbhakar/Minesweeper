@@ -1,15 +1,27 @@
 import java.awt.*;
 import java.util.Arrays;
-
+/**
+ * Minemap class for the Minesweeper program. This class is an object class
+ * for a minemap.
+ * @author Varun Parbhakar
+ * @version 04/10/2022
+ */
 public class MineMap {
-    private Object[][] myMineMap;
-    private int myTotalBombs;
-    private Point[] myBombLocation;
-    private int myRow;
-    private int myColumn;
+    private Object[][] myMineMap; //Stores the map.
+    private int myTotalBombs; //Stores the total number of Bombs on the map.
+    private Point[] myBombLocation; //Stores the location of the bomb.
+
+    //Dimension of the map.
+    private int myRow; //Total number of rows of the map
+    private int myColumn; //Total number of columns of the map
 
 
-    MineMap(final int theRow, final int theColumn) {
+    /**
+     * Constructor for the MineMap.
+     * @param theRow
+     * @param theColumn
+     */
+    public MineMap(final int theRow, final int theColumn) {
         myRow = theRow;
         myColumn = theColumn;
         myTotalBombs = 0;
@@ -17,6 +29,9 @@ public class MineMap {
         myBombLocation = new Point[10];
     }
 
+    /**
+     * Printing a map with the indicators (indicating the total number of bombs at that times).
+     */
     protected void printMapWithIndicators() {
         for (int i = 0; i < myRow; i++) {
             for (int j = 0; j < myColumn; j++) {
@@ -31,6 +46,11 @@ public class MineMap {
         }
 
     }
+    /**
+     * This method inserts a bombs in a specific location.
+     * @param theRow
+     * @param theColumn
+     */
     protected void insertBomb(final int theRow, final int theColumn) {
         if(myBombLocation.length == myTotalBombs) {
             myBombLocation = Arrays.copyOf(myBombLocation, myTotalBombs * 2);
@@ -39,15 +59,29 @@ public class MineMap {
         myMineMap[theRow][theColumn] = new Bomb();
         myTotalBombs++;
     }
+
+    /**
+     * This method inserts an indicator in a specific location.
+     * @param theRow
+     * @param theColumn
+     */
     protected void insertIndicator(final int theRow, final int theColumn) {
         myMineMap[theRow][theColumn] = new Indicator();
     }
 
+    /**
+     * This method checks the bombs and updates the indicators accordingly.
+     */
     protected void indicatorSetter() {
         for (int i = 0; i < myTotalBombs; i++) {
             adjacentBombSetter(myBombLocation[i].getLocation());
         }
     }
+
+    /**
+     * This method is responsible updating all the indexes in every direction.
+     * @param theBombLocation
+     */
     private void adjacentBombSetter(final Point theBombLocation) {
         northLocationSet(theBombLocation);
         northWestLocationSet(theBombLocation);
@@ -158,7 +192,7 @@ public class MineMap {
         }
     }
     /**
-     * This method alerts the indicator to the North of the given bomb.
+     * This method alerts the indicator to the South of the given bomb.
      * @param theBombLocation
      */
     private void southLocationSet(final Point theBombLocation) {
@@ -174,7 +208,7 @@ public class MineMap {
         }
     }
     /**
-     * This method alerts the indicator to the West of the given bomb.
+     * This method alerts the indicator to the East of the given bomb.
      * @param theBombLocation
      */
     private void eastLocationSet(final Point theBombLocation) {
@@ -191,6 +225,12 @@ public class MineMap {
     }
 
 
+    /**
+     * This method only returns the indicator from the map.
+     * @param theRow
+     * @param theColumn
+     * @return
+     */
     private Indicator getIndicator(final int theRow, final int theColumn) {
         if(myMineMap[theRow][theColumn].getClass() == Indicator.class) {
             return (Indicator)myMineMap[theRow][theColumn];
@@ -199,3 +239,5 @@ public class MineMap {
         }
     }
 }
+
+//END
