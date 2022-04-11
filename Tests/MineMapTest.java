@@ -10,6 +10,8 @@ class MineMapTest {
 
     @Test
     void insertBomb() {
+        MineMap mineMap = new MineMap(2,2);
+        mineMap.insertBomb(1,1);
     }
 
     @Test
