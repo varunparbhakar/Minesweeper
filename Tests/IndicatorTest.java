@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class IndicatorTest {
 
-    @Test
+    @org.junit.jupiter.api.Test
     void bombNearBy() {
         Indicator indicator = new Indicator();
         assertEquals(0,indicator.getMyAdjacentBombs());
@@ -12,20 +12,20 @@ class IndicatorTest {
         assertEquals(1,indicator.getMyAdjacentBombs());
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void getMyAdjacentBombs() {
         Indicator indicator = new Indicator();
         indicator.bombNearBy();
         indicator.bombNearBy();
         assertEquals(2,indicator.getMyAdjacentBombs());
     }
-    @Test
+    @org.junit.jupiter.api.Test
     void getMyAdjacentBombsBefore() {
         Indicator indicator = new Indicator();
         assertEquals(0,indicator.getMyAdjacentBombs());
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void testToString() {
         Indicator indicator = new Indicator();
         assertEquals(".",indicator.toString());

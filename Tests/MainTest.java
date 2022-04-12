@@ -1,3 +1,5 @@
+import org.junit.jupiter.api.Test;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.charset.Charset;
@@ -12,18 +14,18 @@ class MainTest {
          * redirection should be input.txt to output.txt
          * @throws FileNotFoundException
          */
-        @org.junit.jupiter.api.Test
+        @Test
         void main() throws FileNotFoundException {
             File File1 = new File("output.txt");
-            String File2
-            assertEquals("The files differ!" ,Files.toString(File1, Charset.forName("UTF-8")), Files.toString("output.txt", Charset.forName("UTF-8")));
+            File File2 = new File("output1.txt");
+            //assertEquals("The files differ!" ,FileUtils.read, Files.toString("output.txt", Charset.forName("UTF-8")));
         }
 
-        @org.junit.jupiter.api.Test
+        @Test
         void driver() {
         }
 
-        @org.junit.jupiter.api.Test
+        @Test
         void mapBuilder() {
         }
 
