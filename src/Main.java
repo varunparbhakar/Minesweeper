@@ -25,6 +25,9 @@ public class Main {
         testInsertMap.printMapWithIndicators();
 
 
+
+
+
 //        File myFile = new File("team_minesweeper_input.txt");
 //        Scanner fileScanner = new Scanner(myFile);
 //        int counter = 1;
