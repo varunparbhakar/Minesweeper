@@ -15,15 +15,15 @@ public class MineMap {
     private int myRow; //Total number of rows of the map
     private int myColumn; //Total number of columns of the map
 
-    protected int getMyTotalBombs() {
+    int getMyTotalBombs() {
         return myTotalBombs;
     }
 
-    protected Object[][] getMyMineMap(){
+    Object[][] getMyMineMap(){
         return myMineMap;
     }
 
-    protected Point[] getMyBombLocation(){
+    Point[] getMyBombLocation(){
         return myBombLocation;
     }
 
@@ -44,7 +44,7 @@ public class MineMap {
     /**
      * Printing a map with the indicators (indicating the total number of bombs at that times).
      */
-    protected void printMapWithIndicators() {
+    void printMapWithIndicators() {
         for (int i = 0; i < myRow; i++) {
             for (int j = 0; j < myColumn; j++) {
                 if(myMineMap[i][j].getClass() == Indicator.class) {
@@ -63,7 +63,7 @@ public class MineMap {
      * @param theRow
      * @param theColumn
      */
-    protected void insertBomb(final int theRow, final int theColumn) {
+    void insertBomb(final int theRow, final int theColumn) {
         if(myBombLocation.length == myTotalBombs) {
             myBombLocation = Arrays.copyOf(myBombLocation, myTotalBombs * 2);
         }
@@ -77,14 +77,14 @@ public class MineMap {
      * @param theRow
      * @param theColumn
      */
-    protected void insertIndicator(final int theRow, final int theColumn) {
+    void insertIndicator(final int theRow, final int theColumn) {
         myMineMap[theRow][theColumn] = new Indicator();
     }
 
     /**
      * This method checks the bombs and updates the indicators accordingly.
      */
-    protected void indicatorSetter() {
+    void indicatorSetter() {
         for (int i = 0; i < myTotalBombs; i++) {
             adjacentBombSetter(myBombLocation[i].getLocation());
         }
