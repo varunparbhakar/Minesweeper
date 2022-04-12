@@ -15,14 +15,16 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
 
         MineMap testInsertMap = new MineMap(1, 5);
-        testInsertMap.insertBomb(0,0);
-        testInsertMap.insertIndicator(0,1);
-        testInsertMap.insertIndicator(0,2);
-        testInsertMap.insertIndicator(0,3);
-        testInsertMap.insertIndicator(0,4);
+//        testInsertMap.insertBomb(0,0);
+//        testInsertMap.insertIndicator(0,1);
+//        testInsertMap.insertIndicator(0,2);
+//        testInsertMap.insertIndicator(0,3);
+//        testInsertMap.insertIndicator(0,4);
+//
+//        testInsertMap.indicatorSetter();
+//        testInsertMap.printMapWithIndicators();
 
-        testInsertMap.indicatorSetter();
-        testInsertMap.printMapWithIndicators();
+
 
 
 //        File myFile = new File("team_minesweeper_input.txt");
