@@ -15,18 +15,6 @@ public class MineMap {
     private int myRow; //Total number of rows of the map
     private int myColumn; //Total number of columns of the map
 
-    public int getMyTotalBombs(){
-        return myTotalBombs;
-    }
-
-    public Object[][] getMyMineMap(){
-        return myMineMap;
-    }
-
-    public Point[] getMyBombLocation(){
-        return myBombLocation;
-    }
-
 
     /**
      * Constructor for the MineMap.
@@ -105,11 +93,13 @@ public class MineMap {
         westLocationSet(theBombLocation);
     }
 
+
+
     /**
      * This method alerts the indicator to the North of the given bomb.
      * @param theBombLocation
      */
-    private void northLocationSet(final Point theBombLocation) {
+    void northLocationSet(final Point theBombLocation) {
         //Checking if location is out of bounds
         if (theBombLocation.getX()-1 >= 0) {
             Indicator myIndicator = getIndicator(theBombLocation.x-1, theBombLocation.y);
@@ -126,7 +116,7 @@ public class MineMap {
      * This method alerts the indicator to the NorthWest of the given bomb.
      * @param theBombLocation
      */
-    private void northWestLocationSet(final Point theBombLocation) {
+    void northWestLocationSet(final Point theBombLocation) {
         //Checking if location is out of bounds
         if (theBombLocation.getX()-1 >= 0 && theBombLocation.getY()+1 < myColumn) {
             Indicator myIndicator = getIndicator(theBombLocation.x - 1, theBombLocation.y + 1);
@@ -142,7 +132,7 @@ public class MineMap {
      * This method alerts the indicator to the NorthEast of the given bomb.
      * @param theBombLocation
      */
-    private void northEastLocationSet(final Point theBombLocation) {
+    void northEastLocationSet(final Point theBombLocation) {
         //Checking if location is out of bounds
         if (theBombLocation.getX()-1 >= 0 && theBombLocation.getY()-1 >= 0) {
             Indicator myIndicator = getIndicator(theBombLocation.x - 1, theBombLocation.y - 1);
@@ -158,7 +148,7 @@ public class MineMap {
      * This method alerts the indicator to the SouthWest of the given bomb.
      * @param theBombLocation
      */
-    private void southWestLocationSet(final Point theBombLocation) {
+    void southWestLocationSet(final Point theBombLocation) {
         //Checking if location is out of bounds
         if (theBombLocation.getX()+1 < myRow && theBombLocation.getY()+1 < myColumn) {
             Indicator myIndicator = getIndicator(theBombLocation.x + 1, theBombLocation.y + 1);
@@ -174,7 +164,7 @@ public class MineMap {
      * This method alerts the indicator to the SouthEast of the given bomb.
      * @param theBombLocation
      */
-    private void southEastLocationSet(final Point theBombLocation) {
+    void southEastLocationSet(final Point theBombLocation) {
         //Checking if location is out of bounds
         if (theBombLocation.getX()+1 < myRow && theBombLocation.getY()-1 >= 0) {
             Indicator myIndicator = getIndicator(theBombLocation.x + 1, theBombLocation.y - 1);
@@ -191,7 +181,7 @@ public class MineMap {
      * This method alerts the indicator to the West of the given bomb.
      * @param theBombLocation
      */
-    private void westLocationSet(final Point theBombLocation) {
+    void westLocationSet(final Point theBombLocation) {
         //Checking if location is out of bounds
         if (theBombLocation.getY()+1 < myColumn) {
             Indicator myIndicator = getIndicator(theBombLocation.x, theBombLocation.y + 1);
@@ -207,7 +197,7 @@ public class MineMap {
      * This method alerts the indicator to the South of the given bomb.
      * @param theBombLocation
      */
-    private void southLocationSet(final Point theBombLocation) {
+    void southLocationSet(final Point theBombLocation) {
         //Checking if location is out of bounds
         if (theBombLocation.getX()+1 < myRow) {
             Indicator myIndicator = getIndicator(theBombLocation.x + 1, theBombLocation.y);
@@ -223,7 +213,7 @@ public class MineMap {
      * This method alerts the indicator to the East of the given bomb.
      * @param theBombLocation
      */
-    private void eastLocationSet(final Point theBombLocation) {
+    void eastLocationSet(final Point theBombLocation) {
         //Checking if location is out of bounds
         if (theBombLocation.getY()-1 >= 0) {
             Indicator myIndicator = getIndicator(theBombLocation.x, theBombLocation.y-1);
@@ -235,7 +225,6 @@ public class MineMap {
 
         }
     }
-
 
     /**
      * This method only returns the indicator from the map.
@@ -250,6 +239,31 @@ public class MineMap {
             return null;
         }
     }
+
+    /**
+     * This method only returns the number of bombs placed.
+     * @return
+     */
+    public int getMyTotalBombs(){
+        return myTotalBombs;
+    }
+
+    /**
+     * This method only returns the mine map as a 2-dimensional array.
+     * @return
+     */
+    public Object[][] getMyMineMap(){
+        return myMineMap;
+    }
+
+    /**
+     * This method only returns the bomb locations in a point array.
+     * @return
+     */
+    public Point[] getMyBombLocation(){
+        return myBombLocation;
+    }
+
 }
 
 //END

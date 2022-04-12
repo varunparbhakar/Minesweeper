@@ -26,8 +26,6 @@ public class Main {
 
 
 
-
-
 //        File myFile = new File("team_minesweeper_input.txt");
 //        Scanner fileScanner = new Scanner(myFile);
 //        int counter = 1;
