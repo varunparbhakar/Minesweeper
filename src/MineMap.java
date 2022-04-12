@@ -15,6 +15,18 @@ public class MineMap {
     private int myRow; //Total number of rows of the map
     private int myColumn; //Total number of columns of the map
 
+    public int getMyTotalBombs(){
+        return myTotalBombs;
+    }
+
+    public Object[][] getMyMineMap(){
+        return myMineMap;
+    }
+
+    public Point[] getMyBombLocation(){
+        return myBombLocation;
+    }
+
 
     /**
      * Constructor for the MineMap.

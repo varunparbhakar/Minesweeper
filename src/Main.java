@@ -13,26 +13,38 @@ public class Main {
      * @throws FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException {
-        File myFile = new File("team_minesweeper_input.txt");
-        Scanner fileScanner = new Scanner(myFile);
-        int counter = 1;
 
-        while (fileScanner.hasNext()) {
-            String currentLine = fileScanner.nextLine();
-            String[] size = currentLine.split(" ");
-            int row = Integer.parseInt(size[0]);
-            int column = Integer.parseInt(size[1]);
-            //Checking if we have reached the end of the input file.
-            if(row == 0 && column == 0) {
-                break;
-            }
-            System.out.println("Field #" + counter + ":");
-            MineMap myMap = mapBuilder( row, column, fileScanner);
-            myMap.indicatorSetter();
-            myMap.printMapWithIndicators();
-            System.out.println();
-            counter++;
-        }
+        MineMap testInsertMap = new MineMap(1, 5);
+        testInsertMap.insertBomb(0,0);
+        testInsertMap.insertIndicator(0,1);
+        testInsertMap.insertIndicator(0,2);
+        testInsertMap.insertIndicator(0,3);
+        testInsertMap.insertIndicator(0,4);
+
+        testInsertMap.indicatorSetter();
+        testInsertMap.printMapWithIndicators();
+
+
+//        File myFile = new File("team_minesweeper_input.txt");
+//        Scanner fileScanner = new Scanner(myFile);
+//        int counter = 1;
+//
+//        while (fileScanner.hasNext()) {
+//            String currentLine = fileScanner.nextLine();
+//            String[] size = currentLine.split(" ");
+//            int row = Integer.parseInt(size[0]);
+//            int column = Integer.parseInt(size[1]);
+//            //Checking if we have reached the end of the input file.
+//            if(row == 0 && column == 0) {
+//                break;
+//            }
+//            System.out.println("Field #" + counter + ":");
+//            MineMap myMap = mapBuilder( row, column, fileScanner);
+//            myMap.indicatorSetter();
+//            myMap.printMapWithIndicators();
+//            System.out.println();
+//            counter++;
+//        }
 
 
 
