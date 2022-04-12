@@ -34,6 +34,9 @@ public class Main {
             counter++;
         }
 
+        File myFile = new File("team_minesweeper_input.txt");
+        Scanner fileScanner = new Scanner(System.in);
+        int counter = 1;
 
 
     }

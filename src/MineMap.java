@@ -15,15 +15,15 @@ public class MineMap {
     private int myRow; //Total number of rows of the map
     private int myColumn; //Total number of columns of the map
 
-    public int getMyTotalBombs(){
+    protected int getMyTotalBombs() {
         return myTotalBombs;
     }
 
-    public Object[][] getMyMineMap(){
+    protected Object[][] getMyMineMap(){
         return myMineMap;
     }
 
-    public Point[] getMyBombLocation(){
+    protected Point[] getMyBombLocation(){
         return myBombLocation;
     }
 
