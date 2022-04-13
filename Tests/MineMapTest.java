@@ -46,10 +46,52 @@ class MineMapTest {
         assertEquals(mineMap[0][4].getClass(), Bomb.class);
     }
 
+    /**
+     * Test inserting ALL bombs throughout the mine map.
+     */
+    @Test
+    void insertAllBomb() {
+        MineMap testInsertMap = new MineMap(1, 5);
+        testInsertMap.insertBomb(0,0);
+        testInsertMap.insertBomb(0,1);
+        testInsertMap.insertBomb(0,2);
+        testInsertMap.insertBomb(0,3);
+        testInsertMap.insertBomb(0,4);
+
+        testInsertMap.indicatorSetter();
+
+        Assert.assertEquals(testInsertMap.getMyTotalBombs(), 5);
+
+        Point[] bombPoints = testInsertMap.getMyBombLocation();
+        Assert.assertEquals(bombPoints[0].x, 0);
+        Assert.assertEquals(bombPoints[0].y, 0);
+
+        Assert.assertEquals(bombPoints[1].x, 0);
+        Assert.assertEquals(bombPoints[1].y, 1);
+
+        Assert.assertEquals(bombPoints[2].x, 0);
+        Assert.assertEquals(bombPoints[2].y, 2);
+
+        Assert.assertEquals(bombPoints[3].x, 0);
+        Assert.assertEquals(bombPoints[3].y, 3);
+
+        Assert.assertEquals(bombPoints[4].x, 0);
+        Assert.assertEquals(bombPoints[4].y, 4);
+
+
+        Object[][] mineMap = testInsertMap.getMyMineMap();
+        assertEquals(mineMap[0][0].getClass(), Bomb.class);
+        assertEquals(mineMap[0][1].getClass(), Bomb.class);
+        assertEquals(mineMap[0][2].getClass(), Bomb.class);
+        assertEquals(mineMap[0][3].getClass(), Bomb.class);
+        assertEquals(mineMap[0][4].getClass(), Bomb.class);
+    }
+
 
     /**
      * Test inserting the bombs when we overfill the original bomb location array.
-     * Expected to double the original array size and also transfer data from old to new array.
+     * Default bomb array size is 10.
+     * Expected to double the original array size (to 20) and also transfer data from old to new array.
      */
     @Test
     void exceedInsertBombLimit() {
@@ -79,11 +121,26 @@ class MineMapTest {
         Assert.assertEquals(testInsertMap.getMyTotalBombs(), 12);
         Assert.assertEquals(testInsertMap.getMyBombLocation().length, 20);
 
+
+        // ensures that all 11 points are in fact bombs.
+        Object[][] mineMap = testInsertMap.getMyMineMap();
+        assertEquals(mineMap[0][0].getClass(), Bomb.class);
+        assertEquals(mineMap[0][1].getClass(), Bomb.class);
+        assertEquals(mineMap[0][2].getClass(), Bomb.class);
+        assertEquals(mineMap[0][3].getClass(), Bomb.class);
+        assertEquals(mineMap[0][4].getClass(), Bomb.class);
+        assertEquals(mineMap[0][5].getClass(), Bomb.class);
+        assertEquals(mineMap[0][6].getClass(), Bomb.class);
+        assertEquals(mineMap[0][7].getClass(), Bomb.class);
+        assertEquals(mineMap[0][8].getClass(), Bomb.class);
+        assertEquals(mineMap[0][9].getClass(), Bomb.class);
+        assertEquals(mineMap[0][10].getClass(), Bomb.class);
+        assertEquals(mineMap[0][11].getClass(), Bomb.class);
     }
 
     /**
      * This method checks if the print map method is printing the map with
-     * the correct number of indicators.
+     * the correct number of indicators with a single bomb in the center on the map.
      */
     @Test
     void printMapWithIndicators_SingleBomb() {
@@ -109,6 +166,66 @@ class MineMapTest {
 
         Assert.assertEquals(testMap, testInsertMap.printMapWithIndicators());
     }
+
+    /**
+     * This method checks if the print map method is printing the map with
+     *      * the correct number of indicators with a ALL bomb on the map.
+     */
+    @Test
+    void printMapWithIndicators_AllBombs() {
+        String testMap = ("***\n***\n***\n");
+
+        //Populating the Map
+        MineMap testInsertMap = new MineMap(3, 3);
+
+        testInsertMap.insertBomb(0,0);
+        testInsertMap.insertBomb(0,1);
+        testInsertMap.insertBomb(0,2);
+
+        testInsertMap.insertBomb(1,0);
+        testInsertMap.insertBomb(1,1);
+        testInsertMap.insertBomb(1,2);
+
+        testInsertMap.insertBomb(2,0);
+        testInsertMap.insertBomb(2,1);
+        testInsertMap.insertBomb(2,2);
+
+        //Setting the indicators
+        testInsertMap.indicatorSetter();
+
+        Assert.assertEquals(testMap, testInsertMap.printMapWithIndicators());
+    }
+
+    /**
+     * This method checks if the print map method is printing the map with
+     *      * the correct number of indicators with a NO bomb on the map.
+     */
+    @Test
+    void printMapWithIndicators_NoBombs() {
+        String testMap = ("000\n000\n000\n");
+
+        //Populating the Map
+        MineMap testInsertMap = new MineMap(3, 3);
+
+        testInsertMap.insertIndicator(0,0);
+        testInsertMap.insertIndicator(0,1);
+        testInsertMap.insertIndicator(0,2);
+
+        testInsertMap.insertIndicator(1,0);
+        testInsertMap.insertIndicator(1,1);
+        testInsertMap.insertIndicator(1,2);
+
+        testInsertMap.insertIndicator(2,0);
+        testInsertMap.insertIndicator(2,1);
+        testInsertMap.insertIndicator(2,2);
+
+        //Setting the indicators
+        testInsertMap.indicatorSetter();
+
+        Assert.assertEquals(testMap, testInsertMap.printMapWithIndicators());
+    }
+
+
 
     /**
      * Insert the regular empty spot (filled with a '.')
@@ -137,6 +254,40 @@ class MineMapTest {
         assertEquals(mineMap[0][0].toString(), ".");
         assertEquals(mineMap[0][1].toString(), ".");
         assertEquals(mineMap[0][3].toString(), ".");
+    }
+
+    /**
+     * Insert all regular empty spot (filled with a '.') on the map
+     *  Were testing that we can safely insert just indicators without bombs on the map.
+     */
+    @Test
+    void insertAllIndicator() {
+        int columns = 5;
+        MineMap testInsertMap = new MineMap(1, 5);
+        testInsertMap.insertIndicator(0,0);
+        testInsertMap.insertIndicator(0,1);
+        testInsertMap.insertIndicator(0,2);
+        testInsertMap.insertIndicator(0,3);
+        testInsertMap.insertIndicator(0,4);
+
+        testInsertMap.indicatorSetter();
+
+        // indicator amount is the column - the amount of bombs.. 5-0 = 5 expected indicators.
+        Assert.assertEquals(columns - testInsertMap.getMyTotalBombs(), 5);
+
+        Object[][] mineMap = testInsertMap.getMyMineMap();
+        assertEquals(mineMap[0][0].getClass(), Indicator.class);
+        assertEquals(mineMap[0][1].getClass(), Indicator.class);
+        assertEquals(mineMap[0][2].getClass(), Indicator.class);
+        assertEquals(mineMap[0][3].getClass(), Indicator.class);
+        assertEquals(mineMap[0][4].getClass(), Indicator.class);
+
+
+        assertEquals(mineMap[0][0].toString(), ".");
+        assertEquals(mineMap[0][1].toString(), ".");
+        assertEquals(mineMap[0][2].toString(), ".");
+        assertEquals(mineMap[0][3].toString(), ".");
+        assertEquals(mineMap[0][4].toString(), ".");
     }
 
     /**
@@ -323,25 +474,25 @@ class MineMapTest {
      */
     @Test
     void northWestLocationSet() {
-        MineMap oneByThreeTestMap = new MineMap(2, 2);
+        MineMap twoByTwoMap = new MineMap(2, 2);
 
 
-        oneByThreeTestMap.insertIndicator(0,0);
-        oneByThreeTestMap.insertIndicator(0,1);
-        oneByThreeTestMap.insertBomb(1,0);
-        oneByThreeTestMap.insertIndicator(1,1);
+        twoByTwoMap.insertIndicator(0,0);
+        twoByTwoMap.insertIndicator(0,1);
+        twoByTwoMap.insertBomb(1,0);
+        twoByTwoMap.insertIndicator(1,1);
 
         // we pass (1, 0) as the bomb location and thus the north-west of that (0, 1) should have a bomb count of 1.
-        Object[][] mineMap = oneByThreeTestMap.getMyMineMap();
+        Object[][] mineMap = twoByTwoMap.getMyMineMap();
         assertEquals(((Indicator) mineMap[0][0]).getMyAdjacentBombs(), 0);
         assertEquals(((Indicator) mineMap[0][1]).getMyAdjacentBombs(), 0);
         assertEquals(mineMap[1][0].getClass(), Bomb.class);
         assertEquals(((Indicator) mineMap[1][1]).getMyAdjacentBombs(), 0);
 
-        oneByThreeTestMap.northWestLocationSet(new Point(1, 0));
+        twoByTwoMap.northWestLocationSet(new Point(1, 0));
 
 
-        mineMap = oneByThreeTestMap.getMyMineMap();
+        mineMap = twoByTwoMap.getMyMineMap();
         // we expect north-west of the bomb to have a bomb count of 1.
         assertEquals(((Indicator) mineMap[0][0]).getMyAdjacentBombs(), 0);
         assertEquals(((Indicator) mineMap[0][1]).getMyAdjacentBombs(), 1);
@@ -355,25 +506,25 @@ class MineMapTest {
      */
     @Test
     void northEastLocationSet() {
-        MineMap oneByThreeTestMap = new MineMap(2, 2);
+        MineMap twoByTwoMap = new MineMap(2, 2);
 
 
-        oneByThreeTestMap.insertIndicator(0,0);
-        oneByThreeTestMap.insertIndicator(0,1);
-        oneByThreeTestMap.insertIndicator(1,0);
-        oneByThreeTestMap.insertBomb(1,1);
+        twoByTwoMap.insertIndicator(0,0);
+        twoByTwoMap.insertIndicator(0,1);
+        twoByTwoMap.insertIndicator(1,0);
+        twoByTwoMap.insertBomb(1,1);
 
         // we pass (1, 1) as the bomb location and thus the north-east of that (0, 0) should have a bomb count of 1.
-        Object[][] mineMap = oneByThreeTestMap.getMyMineMap();
+        Object[][] mineMap = twoByTwoMap.getMyMineMap();
         assertEquals(((Indicator) mineMap[0][0]).getMyAdjacentBombs(), 0);
         assertEquals(((Indicator) mineMap[0][1]).getMyAdjacentBombs(), 0);
         assertEquals(((Indicator) mineMap[1][0]).getMyAdjacentBombs(), 0);
         assertEquals(mineMap[1][1].getClass(), Bomb.class);
 
-        oneByThreeTestMap.northEastLocationSet(new Point(1, 1));
+        twoByTwoMap.northEastLocationSet(new Point(1, 1));
 
 
-        mineMap = oneByThreeTestMap.getMyMineMap();
+        mineMap = twoByTwoMap.getMyMineMap();
         // we expect north-east of the bomb to have a bomb count of 1.
         assertEquals(((Indicator) mineMap[0][0]).getMyAdjacentBombs(), 1);
         assertEquals(((Indicator) mineMap[0][1]).getMyAdjacentBombs(), 0);
@@ -387,25 +538,25 @@ class MineMapTest {
      */
     @Test
     void southWestLocationSet() {
-        MineMap oneByThreeTestMap = new MineMap(2, 2);
+        MineMap twoByTwoMap = new MineMap(2, 2);
 
 
-        oneByThreeTestMap.insertBomb(0,0);
-        oneByThreeTestMap.insertIndicator(0,1);
-        oneByThreeTestMap.insertIndicator(1,0);
-        oneByThreeTestMap.insertIndicator(1,1);
+        twoByTwoMap.insertBomb(0,0);
+        twoByTwoMap.insertIndicator(0,1);
+        twoByTwoMap.insertIndicator(1,0);
+        twoByTwoMap.insertIndicator(1,1);
 
         // we pass (0, 0) as the bomb location and thus the south-west of that (1, 1) should have a bomb count of 1.
-        Object[][] mineMap = oneByThreeTestMap.getMyMineMap();
+        Object[][] mineMap = twoByTwoMap.getMyMineMap();
         assertEquals(mineMap[0][0].getClass(), Bomb.class);
         assertEquals(((Indicator) mineMap[0][1]).getMyAdjacentBombs(), 0);
         assertEquals(((Indicator) mineMap[1][0]).getMyAdjacentBombs(), 0);
         assertEquals(((Indicator) mineMap[1][1]).getMyAdjacentBombs(), 0);
 
-        oneByThreeTestMap.southWestLocationSet(new Point(0, 0));
+        twoByTwoMap.southWestLocationSet(new Point(0, 0));
 
 
-        mineMap = oneByThreeTestMap.getMyMineMap();
+        mineMap = twoByTwoMap.getMyMineMap();
         // we expect south-east of the bomb to have a bomb count of 1.
         assertEquals(mineMap[0][0].getClass(), Bomb.class);
         assertEquals(((Indicator) mineMap[0][1]).getMyAdjacentBombs(), 0);
@@ -419,25 +570,25 @@ class MineMapTest {
      */
     @Test
     void southEastLocationSet() {
-        MineMap oneByThreeTestMap = new MineMap(2, 2);
+        MineMap twoByTwoMap = new MineMap(2, 2);
 
 
-        oneByThreeTestMap.insertIndicator(0,0);
-        oneByThreeTestMap.insertBomb(0,1);
-        oneByThreeTestMap.insertIndicator(1,0);
-        oneByThreeTestMap.insertIndicator(1,1);
+        twoByTwoMap.insertIndicator(0,0);
+        twoByTwoMap.insertBomb(0,1);
+        twoByTwoMap.insertIndicator(1,0);
+        twoByTwoMap.insertIndicator(1,1);
 
         // we pass (0, 1) as the bomb location and thus the south-east of that (1, 0) should have a bomb count of 1.
-        Object[][] mineMap = oneByThreeTestMap.getMyMineMap();
+        Object[][] mineMap = twoByTwoMap.getMyMineMap();
         assertEquals(((Indicator) mineMap[0][0]).getMyAdjacentBombs(), 0);
         assertEquals(mineMap[0][1].getClass(), Bomb.class);
         assertEquals(((Indicator) mineMap[1][0]).getMyAdjacentBombs(), 0);
         assertEquals(((Indicator) mineMap[1][1]).getMyAdjacentBombs(), 0);
 
-        oneByThreeTestMap.southEastLocationSet(new Point(0, 1));
+        twoByTwoMap.southEastLocationSet(new Point(0, 1));
 
 
-        mineMap = oneByThreeTestMap.getMyMineMap();
+        mineMap = twoByTwoMap.getMyMineMap();
         // we expect south-east of the bomb to have a bomb count of 1.
         assertEquals(((Indicator) mineMap[0][0]).getMyAdjacentBombs(), 0);
         assertEquals(mineMap[0][1].getClass(), Bomb.class);
