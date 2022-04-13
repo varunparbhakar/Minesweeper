@@ -1,8 +1,13 @@
+import org.junit.Test;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
 
+
+/**
+ * This test class tests the Bomb class.
+ * @author Austin luu
+ * @version 04/12/2022
+ */
 class BombTest {
     /**
      * tests if the bomb object is the correct class

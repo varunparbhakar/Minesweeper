@@ -13,7 +13,8 @@ public class Main {
      * @throws FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException {
-        File myFile = new File("team_minesweeper_input.txt");
+
+        //File myFile = new File("minesweeper_input.txt");
         Scanner fileScanner = new Scanner(System.in);
         int counter = 1;
 
@@ -29,8 +30,7 @@ public class Main {
             System.out.println("Field #" + counter + ":");
             MineMap myMap = mapBuilder( row, column, fileScanner);
             myMap.indicatorSetter();
-            myMap.printMapWithIndicators();
-            System.out.println();
+            System.out.println(myMap.printMapWithIndicators());
             counter++;
         }
     }

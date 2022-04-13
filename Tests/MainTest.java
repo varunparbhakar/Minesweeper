@@ -12,20 +12,25 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This test class tests the Main class.
+ * @author Austin luu
+ * @version 04/12/2022
+ */
 class MainTest {
 
         /**
          * please use file redirection for this method
-         * redirection should be input.txt to output.txt
-         * output1.txt is the solution text file.
+         * redirection should be mapBuilder_TestInput.txt to Main_Output.txt
+         * Main_Output_Test.txt is the solution text file.
          * this tests whether the output of the main is correct using file redirection.
          * it is unable to take from console so has to check via file redirection
          * @throws FileNotFoundException
          */
         @Test
         void main() throws IOException {
-            Path path1 = Paths.get("src/output.txt");
-            Path path2 = Paths.get("src/output1.txt");
+            Path path1 = Paths.get("src/Main_Output.txt");
+            Path path2 = Paths.get("Tests/Main_Output_Test.txt");
             byte[] f1 = Files.readAllBytes(path1);
             byte[] f2 = Files.readAllBytes(path2);
             assertArrayEquals(f1,f2);
@@ -38,10 +43,9 @@ class MainTest {
      */
         @Test
         void mapBuilder() throws FileNotFoundException {
-            File myFile = new File("input.txt");
+            File myFile = new File("Tests/mapBuilder_TestInput.txt");
             Scanner fileScanner = new Scanner(myFile);
             MineMap mineMap = Main.mapBuilder(4,4,fileScanner);
-            mineMap.printMapWithIndicators();
 
             assertEquals(4,mineMap.getMyMineMap().length);
             assertEquals(4,mineMap.getMyMineMap()[0].length);

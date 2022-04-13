@@ -4,6 +4,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This test class tests the Indicator class.
+ * @author Austin luu
+ * @version 04/12/2022
+ */
 class IndicatorTest {
     /**
      * checks to see if the created indicator is the same class as Indicator.
