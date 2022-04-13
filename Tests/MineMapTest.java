@@ -86,7 +86,7 @@ class MineMapTest {
      * the correct number of indicators.
      */
     @Test
-    void printMapWithIndicators() {
+    void printMapWithIndicators_SingleBomb() {
         String testMap = ("111\n1*1\n111\n");
 
         //Populating the Map
