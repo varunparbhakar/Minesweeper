@@ -21,20 +21,21 @@ class MainTest {
 
         /**
          * please use file redirection for this method
-         * redirection should be mapBuilder_TestInput.txt to Main_Output.txt
-         * Main_Output_Test.txt is the solution text file.
+         * redirection should be minesweeper_input.txt to team_minesweeper_output.txt
+         * team_minesweeper_output.txt is the solution text file.
          * this tests whether the output of the main is correct using file redirection.
          * it is unable to take from console so has to check via file redirection
          * @throws FileNotFoundException
          */
         @Test
         void main() throws IOException {
-            Path path1 = Paths.get("src/Main_Output.txt");
-            Path path2 = Paths.get("Tests/Main_Output_Test.txt");
+            Path path1 = Paths.get("src/team_minesweeper_output.txt");
+            Path path2 = Paths.get("Tests/minesweeper_output.txt");
             byte[] f1 = Files.readAllBytes(path1);
             byte[] f2 = Files.readAllBytes(path2);
             assertArrayEquals(f1,f2);
         }
+
 
     /**
      * verifies correct row/ column
